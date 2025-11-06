@@ -4,13 +4,19 @@ import com.javarush.led.lesson01.config.ApplicationProperties;
 import com.javarush.led.lesson01.config.SessionCreator;
 import com.javarush.led.lesson01.repository.UserRepository;
 import com.javarush.led.lesson01.service.UserService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
     public static void main(String[] args) {
-        ApplicationProperties applicationProperties = new ApplicationProperties();
-        SessionCreator sessionCreator = new SessionCreator(applicationProperties);
-        UserRepository userRepository = new UserRepository(sessionCreator);
-        UserService userService = new UserService(userRepository);
+        ApplicationContext context=new ClassPathXmlApplicationContext("spring-cfg.xml");
+        UserService userService = context.getBean(UserService.class);
         System.out.println(userService);
+
+//        ApplicationProperties applicationProperties = new ApplicationProperties();
+//        SessionCreator sessionCreator = new SessionCreator(applicationProperties);
+//        UserRepository userRepository = new UserRepository(sessionCreator);
+//        UserService userService = new UserService(userRepository);
+//        System.out.println(userService);
     }
 }
