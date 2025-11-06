@@ -17,7 +17,7 @@ import java.util.Properties;
 
 @Slf4j
 @ToString
-@Component
+
 public class ApplicationProperties extends Properties {
 
 
